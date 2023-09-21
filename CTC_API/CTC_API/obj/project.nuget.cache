@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "MZM3/dqy/4DhwpsMxdt5ShDEGvLxdaWuN6vkConLl3dsrqa1YKI/Z9txLfYWIxhKQJGoGYeQ4T2gPDtFJYGucQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ddwal\\Documents\\CTC_API_Practice\\CTC_API\\CTC_API\\CTC_API.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ddwal\\.nuget\\packages\\fsharp.core\\7.0.300\\fsharp.core.7.0.300.nupkg.sha512"
+  ],
+  "logs": []
+}
