@@ -1,10 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "MZM3/dqy/4DhwpsMxdt5ShDEGvLxdaWuN6vkConLl3dsrqa1YKI/Z9txLfYWIxhKQJGoGYeQ4T2gPDtFJYGucQ==",
+  "dgSpecHash": "IeyR4Sbdv8k2LVnYb/ecqJ7F5szeGs3YHC9iWK2WnEjhv3X1gcoiSTwujR7PjEb99plYjSmf7GVRL+KKs+NOkw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ddwal\\Documents\\CTC_API_Practice\\CTC_API\\CTC_API\\CTC_API.fsproj",
+  "projectFilePath": "C:\\Users\\ddwal\\Documents\\CTC_API_Practice\\CTC_API\\CTC_API\\CTC_API.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ddwal\\.nuget\\packages\\fsharp.core\\7.0.300\\fsharp.core.7.0.300.nupkg.sha512"
+    "C:\\Users\\ddwal\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\ddwal\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\ddwal\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\ddwal\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\ddwal\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\ddwal\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
   ],
   "logs": []
 }

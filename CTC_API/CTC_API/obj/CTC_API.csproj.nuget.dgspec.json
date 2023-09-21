@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ddwal\\Documents\\CTC_API_Practice\\CTC_API\\CTC_API\\CTC_API.fsproj": {}
+    "C:\\Users\\ddwal\\Documents\\CTC_API_Practice\\CTC_API\\CTC_API\\CTC_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ddwal\\Documents\\CTC_API_Practice\\CTC_API\\CTC_API\\CTC_API.fsproj": {
+    "C:\\Users\\ddwal\\Documents\\CTC_API_Practice\\CTC_API\\CTC_API\\CTC_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ddwal\\Documents\\CTC_API_Practice\\CTC_API\\CTC_API\\CTC_API.fsproj",
+        "projectUniqueName": "C:\\Users\\ddwal\\Documents\\CTC_API_Practice\\CTC_API\\CTC_API\\CTC_API.csproj",
         "projectName": "CTC_API",
-        "projectPath": "C:\\Users\\ddwal\\Documents\\CTC_API_Practice\\CTC_API\\CTC_API\\CTC_API.fsproj",
+        "projectPath": "C:\\Users\\ddwal\\Documents\\CTC_API_Practice\\CTC_API\\CTC_API\\CTC_API.csproj",
         "packagesPath": "C:\\Users\\ddwal\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\ddwal\\Documents\\CTC_API_Practice\\CTC_API\\CTC_API\\obj\\",
         "projectStyle": "PackageReference",
@@ -22,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\sdk\\7.0.306\\FSharp\\library-packs": {},
           "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -31,17 +30,20 @@
             "targetAlias": "net6.0",
             "projectReferences": {}
           }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
         }
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "FSharp.Core": {
-              "include": "Runtime, Compile, Build, Native, Analyzers, BuildTransitive",
+            "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[7.0.300, )",
-              "generatePathProperty": true
+              "version": "[6.5.0, )"
             }
           },
           "imports": [
