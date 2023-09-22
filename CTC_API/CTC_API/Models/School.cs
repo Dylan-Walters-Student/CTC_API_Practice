@@ -1,6 +1,6 @@
 ﻿namespace CTC_API.Models
 {
-    public class Schools
+    public class School
     {
     }
 }
