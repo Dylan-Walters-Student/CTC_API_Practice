@@ -9,6 +9,9 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+//Tell your app config where to find your connection string
+builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
