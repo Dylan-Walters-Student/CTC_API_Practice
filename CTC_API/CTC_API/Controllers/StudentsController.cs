@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CTC_API.Models;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace CTC_API.Controllers
 {
@@ -13,6 +14,43 @@ namespace CTC_API.Controllers
         public StudentsController(IConfiguration configuration)
         {
             _connectionString = configuration.GetConnectionString("ctc_dev_DBConnection");
+        }
+
+        [HttpPost(Name = "CreateStudents")]
+        public async Task<IActionResult> Create([FromBody]Student student)
+        {
+            string commandText = "INSERT INTO students (first_name, last_name, username, session_code, school_id, class_id) " +
+                                "VALUES (@first_name, @last_name, @username, @session_code, @school_id, @class_id);";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                using(SqlCommand cmd = new SqlCommand(commandText, conn))
+                {
+                    conn.Open();
+
+                    //first name
+                    cmd.Parameters.Add("@first_name", SqlDbType.NVarChar);
+                    cmd.Parameters["@first_name"].Value = student.FirstName;
+                    //last name
+                    cmd.Parameters.Add("@last_name", SqlDbType.NVarChar);
+                    cmd.Parameters["@last_name"].Value = student.LastName;
+                    //username
+                    cmd.Parameters.Add("@username", SqlDbType.NVarChar);
+                    cmd.Parameters["@username"].Value = student.Username;
+                    //session code
+                    cmd.Parameters.Add("@session_code", SqlDbType.NVarChar);
+                    cmd.Parameters["@session_code"].Value = student.SessionCode;
+                    //school id
+                    cmd.Parameters.Add("@school_id", SqlDbType.Int);
+                    cmd.Parameters["@school_id"].Value = student.SchoolId;
+                    //class id
+                    cmd.Parameters.Add("@class_id", SqlDbType.Int);
+                    cmd.Parameters["@class_id"].Value = student.ClassId;
+
+                    cmd.ExecuteNonQuery();
+                    return Ok("woot");
+                }
+            }
         }
 
         [HttpGet(Name = "GetStudents")]
