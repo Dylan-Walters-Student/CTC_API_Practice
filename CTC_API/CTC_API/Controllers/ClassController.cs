@@ -84,5 +84,25 @@ namespace CTC_API.Controllers
                 }
             }
         }
+
+        [HttpDelete(Name = "DeleteClasses")]
+        public async Task<IActionResult> Delete([FromBody] Class classes)
+        {
+            string commandText = "DELETE FROM classes WHERE class_id LIKE @class_id";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(commandText, conn))
+                {
+                    conn.Open();
+
+                    cmd.Parameters.Add("@class_id", SqlDbType.Int);
+                    cmd.Parameters["@class_id"].Value = classes.ClassId;
+
+                    cmd.ExecuteNonQuery();
+                    return Ok("woot woot");
+                }
+            }
+        }
     }
 }
