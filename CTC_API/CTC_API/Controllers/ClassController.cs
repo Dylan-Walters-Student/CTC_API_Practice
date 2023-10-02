@@ -19,17 +19,14 @@ namespace CTC_API.Controllers
         [HttpPost(Name = "CreateClasses")]
         public async Task<IActionResult> Create([FromBody] Class classes)
         {
-            string commandText = "INSERT INTO schools (class_id, class_name) " +
-                                "VALUES (@class_id, @class_name);";
+            string commandText = "INSERT INTO classes (class_name) " +
+                                "VALUES (@class_name);";
 
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 using (SqlCommand cmd = new SqlCommand(commandText, conn))
                 {
                     conn.Open();
-
-                    cmd.Parameters.Add("@class_id", SqlDbType.Int);
-                    cmd.Parameters["@class_id"].Value = classes.ClassId;
 
                     cmd.Parameters.Add("@class_name", SqlDbType.NVarChar);
                     cmd.Parameters["@class_name"].Value = classes.ClassName;
@@ -63,6 +60,29 @@ namespace CTC_API.Controllers
                 }
             }
             return _class;
+        }
+
+        [HttpPut(Name = "UpdateClasses")]
+        public async Task<IActionResult> Update([FromBody] Class classes)
+        {
+            string commandText = $"UPDATE classes SET class_name = @class_name WHERE class_id = @class_id";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(commandText, conn))
+                {
+                    conn.Open();
+
+                    cmd.Parameters.Add("@class_id", SqlDbType.Int);
+                    cmd.Parameters["@class_id"].Value = classes.ClassId;
+
+                    cmd.Parameters.Add("@class_name", SqlDbType.NVarChar);
+                    cmd.Parameters["@class_name"].Value = classes.ClassName;
+
+                    cmd.ExecuteNonQuery();
+                    return Ok("woot woot");
+                }
+            }
         }
     }
 }

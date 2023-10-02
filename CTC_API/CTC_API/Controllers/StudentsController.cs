@@ -82,5 +82,51 @@ namespace CTC_API.Controllers
             }
             return students;
         }
+
+        [HttpPut(Name = "UpdateStudents")]
+        public async Task<IActionResult> Update([FromBody] Student student)
+        {
+            string commandText = $"UPDATE students " +
+                $"SET first_name = @first_name " +
+                $",last_name = @last_name " +
+                $",username = @username " +
+                $",session_code = @session_code " +
+                $",school_id = @school_id " +
+                $",class_id = @class_id " +
+                $"WHERE student_id = @student_id";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(commandText, conn))
+                {
+                    conn.Open();
+
+                    //student id
+                    cmd.Parameters.Add("@student_id", SqlDbType.Int);
+                    cmd.Parameters["@student_id"].Value = student.StudentId;
+                    //first name
+                    cmd.Parameters.Add("@first_name", SqlDbType.NVarChar);
+                    cmd.Parameters["@first_name"].Value = student.FirstName;
+                    //last name
+                    cmd.Parameters.Add("@last_name", SqlDbType.NVarChar);
+                    cmd.Parameters["@last_name"].Value = student.LastName;
+                    //username
+                    cmd.Parameters.Add("@username", SqlDbType.NVarChar);
+                    cmd.Parameters["@username"].Value = student.Username;
+                    //session code
+                    cmd.Parameters.Add("@session_code", SqlDbType.NVarChar);
+                    cmd.Parameters["@session_code"].Value = student.SessionCode;
+                    //school id
+                    cmd.Parameters.Add("@school_id", SqlDbType.Int);
+                    cmd.Parameters["@school_id"].Value = student.SchoolId;
+                    //class id
+                    cmd.Parameters.Add("@class_id", SqlDbType.Int);
+                    cmd.Parameters["@class_id"].Value = student.ClassId;
+
+                    cmd.ExecuteNonQuery();
+                    return Ok("woot woot");
+                }
+            }
+        }
     }
 }
