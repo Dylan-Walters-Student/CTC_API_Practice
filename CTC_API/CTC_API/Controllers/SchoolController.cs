@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CTC_API.Models;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace CTC_API.Controllers
 {
@@ -13,6 +14,30 @@ namespace CTC_API.Controllers
         public SchoolController(IConfiguration configuration)
         {
             _connectionString = configuration.GetConnectionString("ctc_dev_DBConnection");
+        }
+
+        [HttpPost(Name = "CreateSchool")]
+        public async Task<IActionResult> Create([FromBody] School school)
+        {
+            string commandText = "INSERT INTO schools (school_id, school_name) " +
+                                "VALUES (@school_id, @school_name);";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(commandText, conn))
+                {
+                    conn.Open();
+
+                    cmd.Parameters.Add("@school_id", SqlDbType.Int);
+                    cmd.Parameters["@school_id"].Value = school.SchoolId;
+
+                    cmd.Parameters.Add("@school_name", SqlDbType.NVarChar);
+                    cmd.Parameters["@school_name"].Value = school.SchoolName;
+
+                    cmd.ExecuteNonQuery();
+                    return Ok("woot woot");
+                }
+            }
         }
 
         [HttpGet(Name = "GetSchools")]
