@@ -128,5 +128,25 @@ namespace CTC_API.Controllers
                 }
             }
         }
+
+        [HttpDelete(Name = "DeleteStudent")]
+        public async Task<IActionResult> Delete([FromBody] Student student)
+        {
+            string commandText = "DELETE FROM students WHERE student_id LIKE @student_id";
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(commandText, conn))
+                {
+                    conn.Open();
+
+                    cmd.Parameters.Add("@student_id", SqlDbType.Int);
+                    cmd.Parameters["@student_id"].Value = student.StudentId;
+
+                    cmd.ExecuteNonQuery();
+                    return Ok("woot woot");
+                }
+            }
+        }
     }
 }
