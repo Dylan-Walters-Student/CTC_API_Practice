@@ -1,5 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration.AddJsonFile("appsettings.json", optional:false, reloadOnChange:true);
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -8,6 +10,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseCors(x => x 
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .AllowAnyOrigin());
 
 //Tell your app config where to find your connection string
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
