@@ -28,11 +28,18 @@ namespace CTC_API.Controllers
                 {
                     conn.Open();
 
-                    cmd.Parameters.Add("@school_name", SqlDbType.NVarChar);
-                    cmd.Parameters["@school_name"].Value = school.SchoolName;
+                    try
+                    {
+                        cmd.Parameters.Add("@school_name", SqlDbType.NVarChar);
+                        cmd.Parameters["@school_name"].Value = school.SchoolName;
 
-                    cmd.ExecuteNonQuery();
-                    return Ok("woot woot");
+                        cmd.ExecuteNonQuery();
+                        return Ok("woot woot");
+                    }
+                    catch (Exception ex)
+                    {
+                        return BadRequest(ex.Message);
+                    }
                 }
             }
         }
@@ -73,21 +80,16 @@ namespace CTC_API.Controllers
                 {
                     conn.Open();
 
-                    try
-                    {
-                        cmd.Parameters.Add("@school_id", SqlDbType.Int);
-                        cmd.Parameters["@school_id"].Value = school.SchoolId;
 
-                        cmd.Parameters.Add("@school_name", SqlDbType.NVarChar);
-                        cmd.Parameters["@school_name"].Value = school.SchoolName;
+                    cmd.Parameters.Add("@school_id", SqlDbType.Int);
+                    cmd.Parameters["@school_id"].Value = school.SchoolId;
 
-                        cmd.ExecuteNonQuery();
-                        return Ok("woot woot");
-                    }
-                    catch (Exception ex)
-                    {
-                        return BadRequest(ex.Message);
-                    }
+                    cmd.Parameters.Add("@school_name", SqlDbType.NVarChar);
+                    cmd.Parameters["@school_name"].Value = school.SchoolName;
+
+                    cmd.ExecuteNonQuery();
+                    return Ok("woot woot");
+
                 }
             }
         }
