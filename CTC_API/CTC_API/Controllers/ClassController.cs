@@ -80,14 +80,21 @@ namespace CTC_API.Controllers
                 {
                     conn.Open();
 
-                    cmd.Parameters.Add("@class_id", SqlDbType.Int);
-                    cmd.Parameters["@class_id"].Value = classes.ClassId;
+                    try
+                    {
+                        cmd.Parameters.Add("@class_id", SqlDbType.Int);
+                        cmd.Parameters["@class_id"].Value = classes.ClassId;
 
-                    cmd.Parameters.Add("@class_name", SqlDbType.NVarChar);
-                    cmd.Parameters["@class_name"].Value = classes.ClassName;
+                        cmd.Parameters.Add("@class_name", SqlDbType.NVarChar);
+                        cmd.Parameters["@class_name"].Value = classes.ClassName;
 
-                    cmd.ExecuteNonQuery();
-                    return Ok("woot woot");
+                        cmd.ExecuteNonQuery();
+                        return Ok("woot woot");
+                    }
+                    catch (Exception ex)
+                    {
+                        return BadRequest(ex.Message);
+                    }
                 }
             }
         }
